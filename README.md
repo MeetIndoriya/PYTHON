@@ -154,7 +154,7 @@ A set in Python is an **unordered** collection of **unique** elements.
 
 #### 1️⃣ Using Curly Braces `{}`
 
-```python
+```
 s = {1, 2, 3}
 print(s)
 
@@ -178,34 +178,125 @@ print(s)
 | `Discard` | `discard(element)`| **No error** if not found-> {22, 26]. |
 | `Pop` | `pop()` | Removes/returns an arbitrary element ->{24, 26}. |
 | `Clear` | `clear()` | Removes all elements -> {25, 27}. |
+---
+
+| Function | Description | 
+| :--- | :--- | 
+| `union(set)` | Returns a new set containing all elements from both sets. | s1 = {1, 2}; s2 = {3, 4};  print(s1.union(s2)) | {1, 2, 3, 4} |
+| `intersection(set)` | Returns a new set containing elements common to both sets. |
+| `difference(set)` | Returns a new set containing elements in the first set but not in the second. | s1 = {1, 2, 3}; s2 = {2, 3, 4}; print(s1.difference(s2)) → {1} |
+| `symmetric_difference(set)` | Returns a new set containing elements in either set but not in both. |
+| `intersection_update(set)` | Updates the set with the intersection of itself and another set. |
+| `difference_update(set)` | Updates the set by removing elements found in another set. |
+| `symmetric_difference_update(set)` | Updates the set with the symmetric difference of itself and another set. |
+---
+
+
+```
+s1 = {1, 2, 3}; s2 = {2, 3, 4};
+
+print(s1.union(s2))
+# Output → {1, 2, 3, 4}
+
+print(s1.intersection(s2))
+# Output → {2, 3}
+
+print(s1.symmetric_difference(s2))
+# Output → {1, 4}
+
+s1.intersection_update(s2); print(s1)
+# Output → {2, 3}
+
+s1.difference_update(s2);
+print(s1) → {1}
+
+s1.symmetric_difference_update(s2);
+# Output → {1, 4} 
+
+```
+
+
+<br><br><br><br>
+
+## 📘 5. Dictionary
+
+**Description:**
+A dictionary in Python is an **unordered** collection of **key–value pairs**.  
+
+- Keys are **unique** and immutable  
+- Values can be of **any data type**  
+- Dictionaries are created using curly braces `{}` or the `dict()` constructor  
 
 ---
 
-## 📖 4. Dictionaries
-[cite_start]Dictionaries store data in **Key-Value** pairs[cite: 27, 28].
+## 🔹 Dictionary Creation Methods
+
+### 🧱 Using Curly Braces
+
+```
+
+d = {1: "One", 2: "Two"}
+print(d)
+
+# Output {1: 'One', 2: 'Two'}
+
+🏗️ Using dict() Constructor
+d = dict([(1, "One"), (2, "Two")])
+print(d)
+
+# Output {1: 'One', 2: 'Two'}
+```
 
 ### 🏗️ Creation Methods
-1.  [cite_start]**Braces:** `{1: "One"}` [cite: 28]
-2.  [cite_start]**`dict()`:** `dict([(1, "One")])` [cite: 29]
-3.  [cite_start]**`zip()`:** `dict(zip([1], ["One"]))` [cite: 29]
-4.  [cite_start]**`enumerate()`:** `dict(enumerate(["One"], start=1))` [cite: 29]
+1.  **Braces:** `{1: "One"}` 
+2.  **`dict()`:** `dict([(1, "One")])` 
+3.  **`zip()`:** `dict(zip([1], ["One"]))` 
+4.  **`enumerate()`:** `dict(enumerate(["One"], start=1))`
 
-### 🔧 Key Methods
-* [cite_start]**`keys() / values() / items()`**: View keys, values, or (key, value) tuples[cite: 30, 31, 32].
-* [cite_start]**`get(key, default)`**: Safely gets a value; returns default if key is missing[cite: 33].
-* [cite_start]**`setdefault(key, val)`**: Returns value; sets it to `val` if key is missing[cite: 34].
-* [cite_start]**`popitem()`**: Removes and returns the last key-value pair[cite: 40].
+<br><br>
 
+### `🛠️ In-built Functions of Dictionary`
+| Function | Description | Example |
+| :--- | :--- | :--- |
+| `keys()`	| Returns all keys in the dictionary	| `d = {1: "One"}; print(d.keys()) → dict_keys([1])` |
+| `values()`	| Returns all values in the dictionary	| `d = {1: "One"}; print(d.values()) → dict_values(['One'])` |
+| `items()`	| Returns all key-value pairs as list of tuple	| `d = {1: "One"}; print(d.items()) → dict_items([(1, 'One')])` |
+| `get(key, default)`	| Returns value for the key or default if key not found. | `d = {1: "One"}; print(d.get(2, "NA")) → NA` |
+| `update(dict)`	| Updates dictionary with another dictionary. | `d = {1: "One"}; d.update({2: "Two"}); print(d)` |
+| `popitem()` | Removes and returns the last key-value pair | `d = {1: "One"}; d.popitem() ; print(d) → {}` | 
+| `setdefault(key, val)` | Returns value; sets it to `val` if key is missing | `d = {1: "One"}; d.setdefault(2 , "Na"); print(d) → {1: 'One', 2: 'Na'}` |
 ---
 
-## 🚀 5. Comprehensions
-[cite_start]A concise way to create new collections[cite: 41].
+<br>
 
-| Type | Syntax Example |
-| :--- | :--- |
-| **List** | `[i**2 for i in range(5)]` |
-| **Tuple** | `tuple(i**2 for i in range(5))` |
-| **Set** | `{i**2 for i in range(5)}` |
-| **Dict** | `{i: i**2 for i in range(5)}` |
+🧩 Problem Definition with Solution
+```
+Count the frequency of elements in a list using a dictionary.
+
+li = [10, 20, 30, 10, 20, 10]
+d = {}
+
+for i in li:
+    d[i] = d.get(i, 0) + 1
+
+print(d)
+
+Output: {10: 3, 20: 2, 30: 1}
+```
+
+## 🚀 5. Comprehensions
+
+**Description**:- A comprehension is a concise, single-line expression for creating new data structures (such as lists, dictionaries, and sets) from existing iterables.
+
++ **Difference Between List, Tuple, Set, and Dictionary Comprehension:**
+
+| Type | Syntax | Example | Output |
+| :--- | :--- | :--- | :-- |
+| List | [expression for item in iterable] | [i**2 for i in range(5)] | [0, 1, 4, 9, 16]
+| Tuple | tuple(expression for item in iterable) | tuple(i**2 for i in range(5)) | (0, 1, 4, 9, 16)
+| Set | {expression for item in iterable} | {i**2 for i in range(5)} | {0, 1, 4, 9, 16}
+| Dictionary | {key: value for item in iterable} | {i: i**2 for i in range(5)} | {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+---
+
 
 ![Wave](https://capsule-render.vercel.app/api?type=waving&color=0:00c6ff,100:0072ff&height=120&section=footer)
