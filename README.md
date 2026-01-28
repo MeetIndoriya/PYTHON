@@ -297,6 +297,3 @@ Output: {10: 3, 20: 2, 30: 1}
 | Set | {expression for item in iterable} | {i**2 for i in range(5)} | {0, 1, 4, 9, 16}
 | Dictionary | {key: value for item in iterable} | {i: i**2 for i in range(5)} | {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
 ---
-
-
-![Wave](https://capsule-render.vercel.app/api?type=waving&color=0:00c6ff,100:0072ff&height=120&section=footer)
