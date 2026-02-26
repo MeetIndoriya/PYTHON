@@ -4,6 +4,7 @@
 ---
 
 
+
 ## 📋 1. Lists
 Description: A list in Python is a mutable, ordered collection of elements that can store items of different data types. Lists are created using square brackets [] or the list() constructor.
 
